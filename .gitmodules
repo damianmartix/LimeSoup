@@ -1,3 +1,0 @@
-[submodule "LimeSoup/tests"]
-	path = LimeSoup/tests
-	url = git@github.com:CederGroupHub/LimeSoup-unittests.git
