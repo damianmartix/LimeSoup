@@ -51,7 +51,7 @@ class RSCCreateTagAbstract(RuleIngredient):
     def _parse(parser):
         # Create tag from selection function in ParserPaper
         parser.create_tag_from_selection(
-            rule={'name': 'p', 'class': 'abstract'},
+            rule={'class': 'abstract'},
             name_new_tag='h2'
         )
         # Guess introductions
