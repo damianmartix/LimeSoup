@@ -21,7 +21,7 @@ class SpringerFindJournalName(RuleIngredient):
     def _parse(html_str):
         parser = ParserPaper(html_str, parser_type='html.parser', debugging=False)
         rules = [
-            {'name': 'span', 'class':'JournalTitle'}
+            {'name': 'i', 'data-test':'journal-title'}
         ]
         try:
             ParserPaper.journal_name = next(x for x in parser.get(rules))
@@ -69,7 +69,7 @@ class SpringerRemoveTrash(RuleIngredient):
             {'name': 'header', 'class': 'header u-interface'}, #search
             {'name': 'p', 'class': 'icon--meta-keyline-before'}, #published date and info
             {'name': 'h2', 'class': 'Heading u-jsHide'}, #Authors title
-            {'name': 'ul', 'class': 'composite-layer authors'}, #Authors
+            {'name': 'li', 'class': 'c-article-author-list__item'}, #Authors
             {'name': 'div', 'class': 'article-context__container'}, #article context
             {'name': 'div', 'class': 'banner'}, #search
             {'name': 'aside', 'class': 'article-complementary-left'}, #Journal images
@@ -83,6 +83,14 @@ class SpringerRemoveTrash(RuleIngredient):
             {'name': 'aside', 'class': 'Bibliography'}, #Acknowledgements
             {'name': 'section', 'id':'Notes'}, #acknowledgements
             {'name': 'span', 'class': 'CitationRef'}, #references
+            {'name': 'div', 'id': 'rightslink-section'}, #Rights and permissions 
+            {'name': 'div', 'id': 'author-information-section'}, #Author Information
+            {'name': 'div', 'id': 'notes-content'}, #Notes
+            {'name': 'div', 'id': 'Bib1-content'}, #Reference
+            {'name': 'div', 'id': 'Ack1-content'}, #Acknowledgments
+            {'name': 'div', 'id': 'Ack1-content'}, #Acknowledgments
+            {'name': 'div', 'data-component': 'share-box'}, #About this article
+            {'name': 'div', 'id': 'article-info-content'}, #About this article
             
         ]
         parser = ParserPaper(html_str, parser_type='html.parser', debugging=False)
@@ -109,7 +117,7 @@ class SpringerCreateTagAbstract(RuleIngredient):
         # Create tag from selection function in ParserPaper
         parser = ParserPaper(html_str, parser_type='html.parser', debugging=False)
         parser.create_tag_from_selection(
-            rule={'name': 'div', 'class': 'AbstractSection'},
+            rule={'name': 'div', 'id': 'Abs1-content'},
             name_new_tag='h2'
         )
         return parser.raw_html
@@ -141,9 +149,9 @@ class SpringerCollect(RuleIngredient):
     def _parse(html_str):
         parser = ParserPaper(html_str, parser_type='html.parser', debugging=False)
         # Collect information from the paper using ParserPaper
-        parser.get_keywords(rules=[{'name': 'span', 'class': 'Keyword'}])
+        parser.get_keywords(rules=[{'name': 'li', 'class': 'c-article-subject-list__subject'}])
         parser.get_title(rules=[
-                {'name': 'h1', 'class' :'ArticleTitle', 'recursive': True},
+                {'name': 'h1', 'class' :'c-article-title', 'recursive': True},
             ]
         )
         # Create tag from selection function in ParserPaper
