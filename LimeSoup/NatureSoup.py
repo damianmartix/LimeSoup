@@ -54,7 +54,11 @@ class NatureRemoveTrash(RuleIngredient):
             # # Currently all superscript references are removed.
             # {'name': 'a'}
             {'name': 'a', 'data-track-action': 'figure anchor'},  # Figure Link
-            {'name': 'a', 'data-track-action': 'supplementary material anchor'}  # Supplementary Link
+            {'name': 'a', 'data-track-action': 'supplementary material anchor'},  # Supplementary Link
+            {'name': 'a', 'data-track-action': 'download pdf'}, # Download PDF 
+            {'name': 'ul', 'class': 'c-article-subject-list'}, # Download PDF 
+            {'name': 'span', 'data-test': 'illustration-credit'}, # Keywords
+            {'name': 'div', 'class': 'c-blockquote__body'}, # Quote
         ]
         parser.remove_tags(rules=list_remove)
 

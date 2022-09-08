@@ -74,6 +74,7 @@ class SpringerRemoveTrash(RuleIngredient):
             {'name': 'div', 'class': 'banner'}, #search
             {'name': 'aside', 'class': 'article-complementary-left'}, #Journal images
             {'name': 'figure', 'class': 'Figure'}, #Figures
+            {'name': 'div', 'class': 'c-article-section__figure'}, #Figures
             {'name': 'aside', 'class': 'article-about'}, #About paper
             {'name': 'aside', 'class': 'article-complementary-right u-interface'}, #Article actions
             {'name': 'footer', 'class': 'footer'}, #Article footer
@@ -88,9 +89,13 @@ class SpringerRemoveTrash(RuleIngredient):
             {'name': 'div', 'id': 'notes-content'}, #Notes
             {'name': 'div', 'id': 'Bib1-content'}, #Reference
             {'name': 'div', 'id': 'Ack1-content'}, #Acknowledgments
-            {'name': 'div', 'id': 'Ack1-content'}, #Acknowledgments
             {'name': 'div', 'data-component': 'share-box'}, #About this article
             {'name': 'div', 'id': 'article-info-content'}, #About this article
+            {'name': 'div', 'id': 'ethics-section'}, #Ethics declarations
+            {'name': 'div', 'id': 'additional-information-section'}, #Additional information
+            {'name': 'section', 'data-title': 'Electronic supplementary material'}, #Electronic supplementary material
+            {'name': 'section', 'data-title': 'Electronic Supplementary Material'}, #Electronic supplementary material
+            {'name': 'section', 'data-title': 'Supplementary Information'}, #Supplementary Information
             
         ]
         parser = ParserPaper(html_str, parser_type='html.parser', debugging=False)

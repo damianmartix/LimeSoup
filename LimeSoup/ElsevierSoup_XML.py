@@ -85,9 +85,11 @@ class ElsevierCollect(RuleIngredient):
         # find all sections
         for node in soup.find_all('ce:abstract'):
             abstract_paragraph = extract_ce_abstract(node)
-            normalized_name = re.sub(r'[^\w]', '', abstract_paragraph['name'])
-            if re.match(r'abstracts?', normalized_name, re.IGNORECASE):
-                paragraphs.append(abstract_paragraph)
+            #print(abstract_paragraph['content'])
+            paragraphs.append(abstract_paragraph)
+            #normalized_name = re.sub(r'[^\w]', '', abstract_paragraph['content'])
+            #if re.match(r'abstracts?', normalized_name, re.IGNORECASE):
+               # paragraphs.append(abstract_paragraph)
 
         sections = soup.find('ce:sections')
         if sections is not None:

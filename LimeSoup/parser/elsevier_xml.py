@@ -702,7 +702,7 @@ def extract_ce_abstract(node):
 
     section_content = {
         'type': 'ce_section',
-        'name': '',
+        'name': 'Abstract',
         'content': []
     }
 
@@ -716,6 +716,7 @@ def extract_ce_abstract(node):
         abstract_sec = {
             'type': 'ce_section',
             'name': '',
+            #'name': 'Abstract',
             'content': []
         }
 
